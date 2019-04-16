@@ -1,5 +1,4 @@
 package com.codecool.termlib;
-
 public class Game {
     private static GameBoard start = new GameBoard();
 

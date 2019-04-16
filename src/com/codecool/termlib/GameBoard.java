@@ -1,26 +1,44 @@
 package com.codecool.termlib;
 
+
 class GameBoard {
     private static int WIDTH = 20;
     private static int HEIGHT = 20;
     private static String[][] grid =  new String[HEIGHT][WIDTH];
     private static String fillChar = Character.toString('\u2588');
     public void init() {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid.length; j++) {
-                if (i == 0 && j > 0 && j < grid.length - 1) {
+        for (int i = 1; i < grid.length; i+=2) {
+            for (int j = 1; j < grid.length; j+=2) {
+                if (i == 1 && j > 1 && j < grid.length - 2) {
                     grid[i][j] = "\u001B[31;41m" + fillChar;
+                    grid[i-1][j] = "\u001B[31;41m" + fillChar;
+                    grid[i][j-1] = "\u001B[31;41m" + fillChar;
+                    grid[i-1][j-1] = "\u001B[31;41m" + fillChar;
                 }
-                else if (i == grid.length - 1 && j > 0 && j < grid.length - 1) {
-                    grid[i][j] = "\u001B[34;44m" + fillChar;
-                }
-                else if (j == 0 && i > 0 && i < grid.length - 1) {
-                    grid[i][j] = "\u001B[33;43m" + fillChar;
-                }
-                else if (j == grid.length - 1 && i > 0 && i < grid.length - 1) {
+                else if (i == grid.length - 1 && j > 1 && j < grid.length - 2) {
                     grid[i][j] = "\u001B[32;42m" + fillChar;
+                    grid[i-1][j] = "\u001B[32;42m" + fillChar;
+                    grid[i][j-1] = "\u001B[32;42m" + fillChar;
+                    grid[i-1][j-1] = "\u001B[32;42m" + fillChar;
                 }
-                else { grid[i][j] = "\u001B[30;40m" + fillChar; }
+                else if (j == 1 && i > 1 && i < grid.length - 2) {
+                    grid[i][j] = "\u001B[35;45m" + fillChar;
+                    grid[i][j-1] = "\u001B[35;45m" + fillChar;
+                    grid[i-1][j] = "\u001B[35;45m" + fillChar;
+                    grid[i-1][j-1] = "\u001B[35;45m" + fillChar;
+                }
+                else if (j == grid.length - 1 && i > 1 && i < grid.length - 2) {
+                    grid[i][j] = "\u001B[34;44m" + fillChar;
+                    grid[i][j-1] = "\u001B[34;44m" + fillChar;
+                    grid[i-1][j] = "\u001B[34;44m" + fillChar;
+                    grid[i-1][j-1] = "\u001B[34;44m" + fillChar;
+                }
+                else {
+                    grid[i][j] = "\u001B[30;40m" + fillChar;
+                    grid[i-1][j] = "\u001B[30;40m" + fillChar;
+                    grid[i][j-1] = "\u001B[30;40m" + fillChar;
+                    grid[i-1][j-1] = "\u001B[30;40m" + fillChar;
+                }
             }
         }
         for (String[] i:grid) {
