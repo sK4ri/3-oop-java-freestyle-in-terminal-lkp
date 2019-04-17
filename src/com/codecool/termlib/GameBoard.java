@@ -1,16 +1,18 @@
 package com.codecool.termlib;
+import java.util.Random;
 
 class GameBoard {
     private final static int WIDTH = 40;
     private final static int HEIGHT = 40;
     public static final String RED_FOREGROUND = "31";
     private String[][] grid = new String[HEIGHT][WIDTH];
-    private String fillChar = Character.toString('\u2588');
+    private static String fillChar = Character.toString('\u2588');
 
-    void init() {
-        coloringGrid();
-        placeStarterBlock(grid);
+    String[][] init() {
+        return coloringGrid();
+    }
 
+    void printBoard(String[][] grid) {
         for (String[] i : grid) {
             for (String j : i) {
                 System.out.print(j);
@@ -20,7 +22,7 @@ class GameBoard {
         }
     }
 
-    private void coloringGrid() {
+    private String[][] coloringGrid() {
         for (int i = 1; i < grid.length; i += 2) {
             for (int j = 1; j < grid.length; j += 2) {
                 if (i == 1 && j > 1 && j < grid.length - 2) {
@@ -36,17 +38,14 @@ class GameBoard {
                 }
             }
         }
+        return grid;
     }
 
-    private void color2x2(String[][] myGrid, String fg, String bg, int gridI, int gridJ) {
+    String[][] color2x2(String[][] myGrid, String fg, String bg, int gridI, int gridJ) {
         myGrid[gridI][gridJ] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
         myGrid[gridI - 1][gridJ] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
         myGrid[gridI][gridJ - 1] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
         myGrid[gridI - 1][gridJ - 1] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
+        return myGrid;
     }
-
-    private void placeStarterBlock(String[][] grid) {
-        color2x2(grid, "37", "47", grid.length / 2, grid.length / 2);
-    }
-
 }
