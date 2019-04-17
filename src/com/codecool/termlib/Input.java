@@ -2,7 +2,7 @@ package com.codecool.termlib;
 
 import java.awt.*;  
 import java.awt.event.*;  
-    public class Input extends Frame implements Input{  
+    public class Input extends Frame implements KeyListener{  
         Label l;  
         TextArea area;  
         Input(){     
