@@ -1,11 +1,15 @@
 package com.codecool.termlib;
 
+import java.util.Scanner;
+
 public class Game {
     public static void main(String[] args) {
         // Timer initialization
-        int gameTime = 6;
+        int gameTime = 20;
         new Countdown(gameTime);
         System.out.println("Start Game!");
+        Scanner myObj = new Scanner(System.in);
+        String characterPressed = myObj.nextLine();
 
         // Game board initialization
         GameBoard myBoard = new GameBoard();
@@ -15,8 +19,6 @@ public class Game {
         //Game board printing
         colorBlock.placeRandomColoredBlock(myGrid);
         myBoard.printBoard(myGrid);
-        Input checkInputs = new Input();
-        System.out.print(checkInputs);
 
     }
 }
