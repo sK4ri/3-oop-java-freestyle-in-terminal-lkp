@@ -15,5 +15,8 @@ public class Game {
         //Game board printing
         colorBlock.placeRandomColoredBlock(myGrid);
         myBoard.printBoard(myGrid);
+        Input checkInputs = new Input();
+        System.out.print(checkInputs);
+
     }
 }
