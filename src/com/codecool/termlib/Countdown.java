@@ -4,24 +4,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Countdown {
-
-    public static void main(String[] args) {
-        Timer timer = new Timer();
-        timer.schedule(new App(), 0, 1000);
+    Timer timer;
+    public Countdown(int seconds) {
+        timer = new Timer();
+        timer.schedule(new ExitTimer(), seconds*1000);
     }
-}
-
-class App extends TimerTask {
-
-    int countdown = 6;
-
-    public void run() {
-        countdown = countdown - 1;
-        System.out.println(countdown);
-        if (countdown == 0) {
-          System.out.println("exit...");
-          // Terminate JVM
-          System.exit(0);
+    class ExitTimer extends TimerTask {
+        public void run() {
+            System.out.println("Exit");
+            System.exit(0);
         }
+    }
+    public static void main(String args[]) {
+        new Countdown(6);
+        System.out.println("Start Game!");
     }
 }
