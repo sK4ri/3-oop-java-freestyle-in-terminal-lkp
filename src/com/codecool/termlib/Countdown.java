@@ -16,7 +16,8 @@ public class Countdown {
         }
     }
     public static void main(String args[]) {
-        new Countdown(6);
+        int gameTime = 6;
+        new Countdown(gameTime);
         System.out.println("Start Game!");
     }
 }
