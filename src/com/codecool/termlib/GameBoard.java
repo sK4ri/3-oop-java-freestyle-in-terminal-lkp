@@ -48,4 +48,13 @@ class GameBoard {
         myGrid[gridI - 1][gridJ - 1] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
         return myGrid;
     }
+
+    String[][] color4x4(String[][] myGrid, String fg, String bg, int gridI, int gridJ) {
+        for (int i=gridI - 2;i<gridI + 2;i++) {
+            for (int j=gridJ - 2;j<gridJ + 2;j++) {
+                myGrid[i][j] = "\u001B[" + bg + ";" + fg + "m" + fillChar;
+            }
+        }
+        return myGrid;
+    }
 }

@@ -8,7 +8,7 @@ public class CreateColoredBlock {
 
     String[][] placeRandomColoredBlock(String[][] grid) {
         String[] randomColor = randomColor();
-        dummyBoard.color2x2(grid,
+        dummyBoard.color4x4(grid,
                             randomColor[0], randomColor[1],
                         grid.length / 2,grid.length / 2);
         return grid;
