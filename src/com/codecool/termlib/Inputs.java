@@ -1,6 +1,6 @@
 package com.codecool.termlib;
 
-mport java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;  // Import the Scanner class
 
 class Inputs {
 	public static void main(String[] args) {

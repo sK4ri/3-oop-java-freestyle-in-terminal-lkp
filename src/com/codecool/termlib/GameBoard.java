@@ -4,7 +4,6 @@ import java.util.Random;
 class GameBoard {
     private final static int WIDTH = 40;
     private final static int HEIGHT = 40;
-    public static final String RED_FOREGROUND = "31";
     private String[][] grid = new String[HEIGHT][WIDTH];
     private static String fillChar = Character.toString('\u2588');
 
@@ -26,7 +25,7 @@ class GameBoard {
         for (int i = 1; i < grid.length; i += 2) {
             for (int j = 1; j < grid.length; j += 2) {
                 if (i == 1 && j > 1 && j < grid.length - 2) {
-                    color2x2(grid, RED_FOREGROUND, "41", i, j);
+                    color2x2(grid, "31", "41", i, j);
                 } else if (i == grid.length - 1 && j > 1 && j < grid.length - 2) {
                     color2x2(grid, "32", "42", i, j);
                 } else if (j == 1 && i > 1 && i < grid.length - 2) {

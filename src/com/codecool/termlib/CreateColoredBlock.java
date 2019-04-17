@@ -2,7 +2,7 @@ package com.codecool.termlib;
 
 import java.util.Random;
 
-public class CreateColoredBlock {
+class CreateColoredBlock {
     private static final String[][] COLORS = new String[][]{{"31", "41"}, {"32", "42"}, {"34", "44"}, {"35", "45"}};
     GameBoard dummyBoard = new GameBoard();
 
