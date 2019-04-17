@@ -11,13 +11,13 @@ public class Countdown {
     }
     class ExitTimer extends TimerTask {
         public void run() {
-            System.out.println("Exit");
+            System.out.println("Time's out!");
             System.exit(0);
         }
     }
     public static void main(String args[]) {
-        int gameTime = 6;
-        new Countdown(gameTime);
+        int gameTimeInSeconds = 6;
+        new Countdown(gameTimeInSeconds);
         System.out.println("Start Game!");
     }
 }

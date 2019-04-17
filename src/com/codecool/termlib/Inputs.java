@@ -1,10 +1,10 @@
 package com.codecool.termlib;
 
-mport java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;  // Import the Scanner class
 
 class Inputs {
 	public static void main(String[] args) {
-	inputs(); 
+	inputs();
   }
 	public static int inputs(){
 	Scanner direction = new Scanner(System.in);
@@ -32,5 +32,5 @@ class Inputs {
 }
 
 System.out.println(button);
-return button;} 	
-} 
+return button;}
+}
