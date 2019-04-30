@@ -1,15 +1,16 @@
 package com.codecool.termlib.gridelements;
 
-import java.util.HashMap;
+import com.codecool.termlib.Direction;
+import static com.codecool.termlib.Direction.*;
+import static com.codecool.termlib.gridelements.Shapes.*;
 
 class PipeElement extends GridElement {
-    static HashMap<String, Object> charCodesofShapes;
     /**
      * Directions in which the element is connected
      * The arrays first element are the directions in which the element is connected
      * 0 is LEFT, 1 is UP, 2 is RIGHT, 3 is DOWN
      */
-    int[] activeDirections;
+    Direction[] activeDirections;
     /**
      * Next permutation of pipe element
      */
@@ -18,12 +19,35 @@ class PipeElement extends GridElement {
     /**
      * Constructor
      *
-     * @param a   character code
-     * @param dir array with 2 elements representing the "active" directions of pipe element
+     * @param shape   Characters enum name
      */
-    PipeElement(char a, int[] dir) {
-        this.charCode = a;
-        this.activeDirections = dir;
+    PipeElement(Shapes shape) {
+        switch (shape) {
+            case UPRIGHT:
+                this.charCode = (char)9491;
+                this.activeDirections = new Direction[]{LEFT,DOWN};
+                this.nextPermutationOfElement = new PipeElement(UPLEFT);
+            case UPLEFT:
+                this.charCode = (char)9487;
+                this.activeDirections = new Direction[]{RIGHT,DOWN};
+                this.nextPermutationOfElement = new PipeElement(DOWNLEFT);
+            case DOWNLEFT:
+                this.charCode = (char)9495;
+                this.activeDirections = new Direction[]{RIGHT,UP};
+                this.nextPermutationOfElement = new PipeElement(DOWNRIGHT);
+            case DOWNRIGHT:
+                this.charCode = (char)9499;
+                this.activeDirections = new Direction[]{LEFT,UP};
+                this.nextPermutationOfElement = new PipeElement(UPRIGHT);
+            case HORIZONTAL:
+                this.charCode = (char)9473;
+                this.activeDirections = new Direction[]{UP,DOWN};
+                this.nextPermutationOfElement = new PipeElement(VERTICAL);
+            case VERTICAL:
+                this.charCode = (char)9475;
+                this.activeDirections = new Direction[]{RIGHT,LEFT};
+                this.nextPermutationOfElement = new PipeElement(HORIZONTAL);
+        }
     }
     /**
      * Get next permutation
@@ -35,19 +59,7 @@ class PipeElement extends GridElement {
 
 
     public static void main(String[] args) {
-        PipeElement DOWNRIGHT = new PipeElement((char) 9499, new int[]{1, 2});
-        PipeElement DOWNLEFT = new PipeElement((char) 9495, new int[]{0, 1});
-        PipeElement UPLEFT = new PipeElement((char) 9487, new int[]{0, 3});
-        PipeElement UPRIGHT = new PipeElement((char) 9491, new int[]{2, 3});
-        DOWNRIGHT.nextPermutationOfElement = UPRIGHT;
-        DOWNLEFT.nextPermutationOfElement = DOWNRIGHT;
-        UPLEFT.nextPermutationOfElement = DOWNLEFT;
-        UPRIGHT.nextPermutationOfElement = UPLEFT;
 
-        PipeElement VERTICAL = new PipeElement((char) 9475, new int[]{0, 2});
-        PipeElement HORIZONTAL = new PipeElement((char) 9473, new int[]{1, 3});
-        VERTICAL.nextPermutationOfElement = HORIZONTAL;
-        HORIZONTAL.nextPermutationOfElement = VERTICAL;
-        System.out.println(DOWNLEFT.getNextPermutation().charCode);
+
     }
 }
