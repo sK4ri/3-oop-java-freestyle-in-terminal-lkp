@@ -16,7 +16,6 @@ class Grid {
     static String[] alph = {"A", "B", "C", "D"};
 
     static String[][] table = new String[8][8];
-
     static Random randNum = new Random();
 
     static String[][] mainGrid () {
@@ -35,7 +34,7 @@ class Grid {
                 } else if (i == 1 && j == 6) {
                     table[i][j] = Character.toString(UPRIGHT);
                 } else if (j == 1 && i == 6) {
-                    table[i+1][j] = Character.toString(DOWNLEFT);
+                    table[i][j] = Character.toString(DOWNLEFT);
                 } else if (j == 6 && i == 6) {
                     table[i][j] = Character.toString(DOWNRIGHT);
                 } else if (j == 6 || j == 1) {
