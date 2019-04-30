@@ -1,6 +1,12 @@
 package com.codecool.termlib;
 
+import java.util.HashMap;
 import java.util.Random;
+
+import com.codecool.termlib.gridelements.GridElement;
+import com.codecool.termlib.gridelements.PipeElement;
+import com.codecool.termlib.gridelements.Shape;
+
 
 class Grid {
 
@@ -11,42 +17,55 @@ class Grid {
     static char HORIZONTAL = (char)9473;
     static char VERTICAL = (char)9475;
 
-    static char[] charList = {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT, HORIZONTAL, VERTICAL};
+    static Shape[] pipeCharList = {Shape.UPLEFT, Shape.UPRIGHT, Shape.DOWNLEFT, Shape.DOWNRIGHT, Shape.HORIZONTAL, Shape.VERTICAL};
+    static HashMap<Integer, Shape> numberShapes = new HashMap<>(){{ put(1, Shape.ONE);
+                                                                    put(2, Shape.TWO);
+                                                                    put(3, Shape.THREE);
+                                                                    put(4, Shape.FOUR);}};
 
-    static String[] alph = {"A", "B", "C", "D"};
+    static Shape[] alph = {Shape.A, Shape.B, Shape.C, Shape.D};
 
-    static String[][] table = new String[8][8];
+    GridElement[][] table = new GridElement[8][8];
     static Random randNum = new Random();
 
-    static String[][] mainGrid () {
+    GridElement[][] mainGrid () {
         for (int i = 0; i <= 7; i++) {
             for (int j = 0; j <= 7; j++) {
                 if (i == 0 && j > 1 && j < 6) {
-                    table[i][j] = Integer.toString(j-1);
+                    table[i][j] = new PipeElement(numberShapes.get(j-1));
                 } else if (i == 0 && j < 1 || j > 6) {
-                    table[i][j] = " ";
+                    table[i][j] = new GridElement();
                 } else if (j == 0 && i > 1 && i < 6) {
-                    table[i][j] = alph[i-2];
+                    table[i][j] = new PipeElement(alph[i-2]);
                 } else if (j == 0 || i < 1 || i > 6) {
-                    table[i][j] = " ";
+                    table[i][j] = new GridElement();
                 } else if (i == 1 && j == 1) {
-                    table[i][j] = Character.toString(UPLEFT);
+                    table[i][j] = new PipeElement(Shape.UPLEFT);
                 } else if (i == 1 && j == 6) {
-                    table[i][j] = Character.toString(UPRIGHT);
+                    table[i][j] = new PipeElement(Shape.UPRIGHT);
                 } else if (j == 1 && i == 6) {
-                    table[i][j] = Character.toString(DOWNLEFT);
+                    table[i][j] = new PipeElement(Shape.DOWNLEFT);
                 } else if (j == 6 && i == 6) {
-                    table[i][j] = Character.toString(DOWNRIGHT);
+                    table[i][j] = new PipeElement(Shape.DOWNRIGHT);
                 } else if (j == 6 || j == 1) {
-                    table[i][j] = Character.toString(VERTICAL);
+                    table[i][j] = new PipeElement(Shape.VERTICAL);
                 } else if (i == 6 || i == 1) {
-                    table[i][j] = Character.toString(HORIZONTAL);
+                    table[i][j] = new PipeElement(Shape.HORIZONTAL);
                 } else {
-                    table[i][j] = Character.toString(charList[randNum.nextInt(charList.length)]);
+                    table[i][j] = new PipeElement(pipeCharList[randNum.nextInt(pipeCharList.length)]); //TODO change to GridElement
                 }
             }
         }
     return table;
     }
+    void printGrid(GridElement[][] grid) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++){
+                System.out.print(grid[i][j].charCode);
+            }
+            System.out.println();
+        }
+    }
 }
+
 

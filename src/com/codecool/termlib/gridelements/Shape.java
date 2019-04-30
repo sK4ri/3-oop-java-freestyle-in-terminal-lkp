@@ -7,4 +7,13 @@ public enum Shape {
     DOWNRIGHT,
     HORIZONTAL,
     VERTICAL,
+    A,
+    B,
+    C,
+    D,
+    ONE,
+    TWO,
+    THREE,
+    FOUR
+
 }

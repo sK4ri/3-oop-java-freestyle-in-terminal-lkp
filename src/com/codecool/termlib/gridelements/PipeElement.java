@@ -1,10 +1,11 @@
 package com.codecool.termlib.gridelements;
 
+
 import com.codecool.termlib.Direction;
 import static com.codecool.termlib.Direction.*;
 import static com.codecool.termlib.gridelements.Shape.*;
 
-class PipeElement extends GridElement {
+public class PipeElement extends GridElement {
     /**
      * Directions in which the element is connected
      * The arrays first element are the directions in which the element is connected
@@ -25,7 +26,7 @@ class PipeElement extends GridElement {
      *
      * @param shape   Characters enum name
      */
-    PipeElement(Shape shape) {
+    public PipeElement(Shape shape) {
         switch (shape) {
             case UPRIGHT:
                 this.charCode = (char)9491;
@@ -57,10 +58,31 @@ class PipeElement extends GridElement {
                 this.activeDirections = new Direction[]{RIGHT,LEFT};
                 this.nextPermutationOfElement = HORIZONTAL;
                 break;
-             default:
-                 this.charCode = 100;
-                 this.activeDirections = new Direction[]{RIGHT,LEFT};
-                 this.nextPermutationOfElement = HORIZONTAL;
+            case A:
+                this.charCode = 'A';
+                break;
+            case B:
+                this.charCode = 'B';
+                break;
+            case C:
+                this.charCode = 'C';
+                break;
+            case D:
+                this.charCode = 'D';
+                break;
+            case ONE:
+                this.charCode = '1';
+                break;
+            case TWO:
+                this.charCode = '2';
+                break;
+            case THREE:
+                this.charCode = '3';
+                break;
+            case FOUR:
+                this.charCode = '4';
+                break;
+
         }
         this.myShape = shape;
     }
@@ -71,12 +93,4 @@ class PipeElement extends GridElement {
         return new PipeElement(shape);
     }
 
-
-
-    public static void main(String[] args) {
-        PipeElement a1 = new PipeElement(VERTICAL);
-        PipeElement nextShape = a1.getNextPermutation(a1.nextPermutationOfElement);
-        System.out.println(a1.charCode);
-        System.out.println(nextShape.charCode);
-    }
 }
