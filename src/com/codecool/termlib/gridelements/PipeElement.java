@@ -2,7 +2,7 @@ package com.codecool.termlib.gridelements;
 
 import com.codecool.termlib.Direction;
 import static com.codecool.termlib.Direction.*;
-import static com.codecool.termlib.gridelements.Shapes.*;
+import static com.codecool.termlib.gridelements.Shape.*;
 
 class PipeElement extends GridElement {
     /**
@@ -12,54 +12,71 @@ class PipeElement extends GridElement {
      */
     Direction[] activeDirections;
     /**
+     * Shape of element
+     */
+    Shape myShape;
+    /**
      * Next permutation of pipe element
      */
-    private PipeElement nextPermutationOfElement;
+    Shape nextPermutationOfElement;
 
     /**
      * Constructor
      *
      * @param shape   Characters enum name
      */
-    PipeElement(Shapes shape) {
+    PipeElement(Shape shape) {
         switch (shape) {
             case UPRIGHT:
                 this.charCode = (char)9491;
                 this.activeDirections = new Direction[]{LEFT,DOWN};
-                this.nextPermutationOfElement = new PipeElement(UPLEFT);
+                this.nextPermutationOfElement = UPLEFT;
+                break;
             case UPLEFT:
                 this.charCode = (char)9487;
                 this.activeDirections = new Direction[]{RIGHT,DOWN};
-                this.nextPermutationOfElement = new PipeElement(DOWNLEFT);
+                this.nextPermutationOfElement = DOWNLEFT;
+                break;
             case DOWNLEFT:
                 this.charCode = (char)9495;
                 this.activeDirections = new Direction[]{RIGHT,UP};
-                this.nextPermutationOfElement = new PipeElement(DOWNRIGHT);
+                this.nextPermutationOfElement = DOWNRIGHT;
+                break;
             case DOWNRIGHT:
                 this.charCode = (char)9499;
                 this.activeDirections = new Direction[]{LEFT,UP};
-                this.nextPermutationOfElement = new PipeElement(UPRIGHT);
+                this.nextPermutationOfElement = UPRIGHT;
+                break;
             case HORIZONTAL:
                 this.charCode = (char)9473;
                 this.activeDirections = new Direction[]{UP,DOWN};
-                this.nextPermutationOfElement = new PipeElement(VERTICAL);
+                this.nextPermutationOfElement = VERTICAL;
+                break;
             case VERTICAL:
                 this.charCode = (char)9475;
                 this.activeDirections = new Direction[]{RIGHT,LEFT};
-                this.nextPermutationOfElement = new PipeElement(HORIZONTAL);
+                this.nextPermutationOfElement = HORIZONTAL;
+                break;
+             default:
+                 this.charCode = 100;
+                 this.activeDirections = new Direction[]{RIGHT,LEFT};
+                 this.nextPermutationOfElement = HORIZONTAL;
         }
+        this.myShape = shape;
     }
     /**
      * Get next permutation
      */
-    PipeElement getNextPermutation() {
-        return nextPermutationOfElement;
+    PipeElement getNextPermutation(Shape shape) {
+        return new PipeElement(shape);
     }
 
 
 
     public static void main(String[] args) {
-
-
+        PipeElement a1 = new PipeElement(VERTICAL);
+        PipeElement nextShape = a1.getNextPermutation(a1.nextPermutationOfElement);
+        System.out.println(a1.charCode);
+        System.out.println(nextShape.charCode);
     }
 }

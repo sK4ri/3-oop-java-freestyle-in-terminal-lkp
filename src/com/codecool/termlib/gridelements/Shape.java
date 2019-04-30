@@ -1,6 +1,6 @@
 package com.codecool.termlib.gridelements;
 
-public enum Shapes {
+public enum Shape {
     UPRIGHT,
     UPLEFT,
     DOWNLEFT,
