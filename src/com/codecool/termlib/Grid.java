@@ -10,12 +10,6 @@ import com.codecool.termlib.gridelements.Shape;
 
 class Grid {
 
-    static char UPRIGHT = (char)9491;
-    static char UPLEFT = (char)9487;
-    static char DOWNRIGHT = (char)9499;
-    static char DOWNLEFT = (char)9495;
-    static char HORIZONTAL = (char)9473;
-    static char VERTICAL = (char)9475;
 
     static Shape[] pipeCharList = {Shape.UPLEFT, Shape.UPRIGHT, Shape.DOWNLEFT, Shape.DOWNRIGHT, Shape.HORIZONTAL, Shape.VERTICAL};
     static HashMap<Integer, Shape> numberShapes = new HashMap<>(){{ put(1, Shape.ONE);
