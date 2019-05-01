@@ -22,27 +22,27 @@ class Grid {
         for (int i = 0; i <= 7; i++) {
             for (int j = 0; j <= 7; j++) {
                 if (i == 0 && j > 1 && j < 6) {
-                    table[i][j] = new ExternalGridElement(numberShapes.get(j-1));
+                    table[i][j] = new GridElement(numberShapes.get(j-1));
                 } else if (i == 0 && j < 1 || j > 6) {
-                    table[i][j] = new GridElement();
+                    table[i][j] = new GridElement(Shape.SPACE);
                 } else if (j == 0 && i > 1 && i < 6) {
-                    table[i][j] = new ExternalGridElement(alph[i-2]);
+                    table[i][j] = new GridElement(alph[i-2]);
                 } else if (j == 0 || i < 1 || i > 6) {
-                    table[i][j] = new GridElement();
+                    table[i][j] = new GridElement(Shape.SPACE);
                 } else if (i == 1 && j == 1) {
-                    table[i][j] = new PipeElement(Shape.UPLEFT);
+                    table[i][j] = new GridElement(Shape.UPLEFT);
                 } else if (i == 1 && j == 6) {
-                    table[i][j] = new PipeElement(Shape.UPRIGHT);
+                    table[i][j] = new GridElement(Shape.UPRIGHT);
                 } else if (j == 1 && i == 6) {
-                    table[i][j] = new PipeElement(Shape.DOWNLEFT);
+                    table[i][j] = new GridElement(Shape.DOWNLEFT);
                 } else if (j == 6 && i == 6) {
-                    table[i][j] = new PipeElement(Shape.DOWNRIGHT);
+                    table[i][j] = new GridElement(Shape.DOWNRIGHT);
                 } else if (j == 6 || j == 1) {
-                    table[i][j] = new PipeElement(Shape.VERTICAL);
+                    table[i][j] = new GridElement(Shape.VERTICAL);
                 } else if (i == 6 || i == 1) {
-                    table[i][j] = new PipeElement(Shape.HORIZONTAL);
+                    table[i][j] = new GridElement(Shape.HORIZONTAL);
                 } else {
-                    table[i][j] = new BorderElement(pipeCharList[randNum.nextInt(pipeCharList.length)]);
+                    table[i][j] = new GridElement(pipeCharList[randNum.nextInt(pipeCharList.length)]);
                 }
             }
         }
@@ -55,6 +55,13 @@ class Grid {
             }
             System.out.println();
         }
+    }
+    GridElement getFieldElement(int[] field, GridElement[][] grid) {
+        return grid[field[0]][field[1]];
+    }
+
+    void changeFieldElement(int[] field, GridElement newElement, GridElement[][] grid) {
+        grid[field[0]][field[1]] = newElement;
     }
 }
 

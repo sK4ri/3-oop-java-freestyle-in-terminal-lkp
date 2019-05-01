@@ -5,7 +5,7 @@ import com.codecool.termlib.Direction;
 import static com.codecool.termlib.Direction.*;
 import static com.codecool.termlib.gridelements.Shape.*;
 
-public class PipeElement extends GridElement {
+public class PipeElement {
     /**
      * Directions in which the element is connected
      * The arrays first element are the directions in which the element is connected
@@ -19,53 +19,12 @@ public class PipeElement extends GridElement {
     /**
      * Next permutation of pipe element
      */
-    Shape nextPermutationOfElement;
+    public Shape nextPermutationOfElement;
 
     /**
      * Constructor
      * Setting character values, next permutation shapes and active directions
      * @param shape   Characters enum name
      */
-    public PipeElement(Shape shape) {
-        switch (shape) {
-            case UPRIGHT:
-                this.charCode = (char)9491;
-                this.activeDirections = new Direction[]{LEFT,DOWN};
-                this.nextPermutationOfElement = UPLEFT;
-                break;
-            case UPLEFT:
-                this.charCode = (char)9487;
-                this.activeDirections = new Direction[]{RIGHT,DOWN};
-                this.nextPermutationOfElement = DOWNLEFT;
-                break;
-            case DOWNLEFT:
-                this.charCode = (char)9495;
-                this.activeDirections = new Direction[]{RIGHT,UP};
-                this.nextPermutationOfElement = DOWNRIGHT;
-                break;
-            case DOWNRIGHT:
-                this.charCode = (char)9499;
-                this.activeDirections = new Direction[]{LEFT,UP};
-                this.nextPermutationOfElement = UPRIGHT;
-                break;
-            case HORIZONTAL:
-                this.charCode = (char)9473;
-                this.activeDirections = new Direction[]{UP,DOWN};
-                this.nextPermutationOfElement = VERTICAL;
-                break;
-            case VERTICAL:
-                this.charCode = (char)9475;
-                this.activeDirections = new Direction[]{RIGHT,LEFT};
-                this.nextPermutationOfElement = HORIZONTAL;
-                break;
-        }
-        this.myShape = shape;
-    }
-    /**
-     * Get next permutation
-     */
-    PipeElement getNextPermutation(Shape shape) {
-        return new PipeElement(shape);
-    }
 
 }

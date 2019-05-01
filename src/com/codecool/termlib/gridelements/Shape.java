@@ -14,6 +14,7 @@ public enum Shape {
     ONE,
     TWO,
     THREE,
-    FOUR
+    FOUR,
+    SPACE
 
 }
