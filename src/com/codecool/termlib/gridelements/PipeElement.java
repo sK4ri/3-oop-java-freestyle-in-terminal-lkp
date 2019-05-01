@@ -1,6 +1,5 @@
 package com.codecool.termlib.gridelements;
 
-
 import com.codecool.termlib.Direction;
 import static com.codecool.termlib.Direction.*;
 import static com.codecool.termlib.gridelements.Shape.*;

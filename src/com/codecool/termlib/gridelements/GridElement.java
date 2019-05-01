@@ -7,7 +7,7 @@ public class GridElement {
     public char charCode;
     /**
      * Coordinates of element
-     *  coordinates[0] stands for rows (i)
+     * Coordinates[0] stands for rows (i)
      * coordinates[1] stands for columns (j)
      */
     int[] coordinates = new int[2];
