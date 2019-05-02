@@ -76,6 +76,7 @@ class Grid {
     void checkConnectionOfGridElement(GridElement[][] grid) {
         for (int i = 2; i < grid.length - 2; i++) {
             for (int j = 2; j < grid[i].length - 2; j++) {
+                grid[i][j].isConnected = false;
                 if (grid[i][j].activeDirections.containsKey(Direction.LEFT)) {
                     if (grid[i][j - 1].activeDirections.containsKey(Direction.RIGHT)) {
                         grid[i][j].isConnected = true;
