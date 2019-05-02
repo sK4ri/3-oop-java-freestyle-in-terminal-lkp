@@ -53,6 +53,7 @@ class Grid {
             for (int j = 0; j < grid[i].length; j++){
                 System.out.print(grid[i][j].charCode);
             }
+
             System.out.println();
         }
     }
@@ -62,6 +63,15 @@ class Grid {
 
     void changeFieldElement(int[] field, GridElement newElement, GridElement[][] grid) {
         grid[field[0]][field[1]] = newElement;
+    }
+
+
+    void getBlue(){
+        System.out.print((char)27 + "[34m");
+    }
+
+    void getNative(){
+        System.out.print((char)27 + "[39m");
     }
 }
 
