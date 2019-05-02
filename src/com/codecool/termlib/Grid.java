@@ -65,9 +65,36 @@ class Grid {
     }
 
     void checkConnectionOfGridElement(GridElement[][] grid) {
-        for (int i=1;i<grid.length-1;i++) {
-            for (int j=1;j<grid[i].length-1;j++) {
+        for (int i=2;i<grid.length-2;i++) {
+            for (int j=2;j<grid[i].length-2;j++) {
+                if (grid[i][j].activeDirections.containsKey(Direction.LEFT)) {
 
+                    if (grid[i][j-1].activeDirections.containsKey(Direction.RIGHT)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.RIGHT)) {
+
+                    if (grid[i][j+1].activeDirections.containsKey(Direction.LEFT)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.DOWN)) {
+
+                    if (grid[i+1][j].activeDirections.containsKey(Direction.UP)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.UP)) {
+
+                    if (grid[i-1][j].activeDirections.containsKey(Direction.DOWN)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
             }
         }
     }

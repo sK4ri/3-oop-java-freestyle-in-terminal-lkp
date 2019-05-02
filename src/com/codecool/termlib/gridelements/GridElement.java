@@ -37,7 +37,10 @@ public class GridElement {
      * Next permutation of pipe element
      */
     public Shape nextPermutationOfElement;
-
+    /**
+     * Tells if element is connected
+     */
+    public boolean isConnected = false;
     /**
      * Constructor
      * Setting character values, next permutation shapes and active directions
