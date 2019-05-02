@@ -39,7 +39,7 @@ public class Input {
         else {
             results = new int[]{0,0};
         }
-        in.close();
+        // in.close();
 
         return results;
     }
