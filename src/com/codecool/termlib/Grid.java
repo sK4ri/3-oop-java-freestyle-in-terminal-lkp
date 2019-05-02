@@ -51,6 +51,12 @@ class Grid {
     void printGrid(GridElement[][] grid) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++){
+                if (grid[i][j].isConnected) {
+                    System.out.print((char)27 + "[34m");
+                }
+                else {
+                    System.out.print((char)27 + "[39m");
+                    }
                 System.out.print(grid[i][j].charCode);
             }
             System.out.println();
@@ -62,6 +68,41 @@ class Grid {
 
     void changeFieldElement(int[] field, GridElement newElement, GridElement[][] grid) {
         grid[field[0]][field[1]] = newElement;
+    }
+
+    void checkConnectionOfGridElement(GridElement[][] grid) {
+        for (int i=2;i<grid.length-2;i++) {
+            for (int j=2;j<grid[i].length-2;j++) {
+                if (grid[i][j].activeDirections.containsKey(Direction.LEFT)) {
+
+                    if (grid[i][j-1].activeDirections.containsKey(Direction.RIGHT)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.RIGHT)) {
+
+                    if (grid[i][j+1].activeDirections.containsKey(Direction.LEFT)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.DOWN)) {
+
+                    if (grid[i+1][j].activeDirections.containsKey(Direction.UP)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+                if (grid[i][j].activeDirections.containsKey(Direction.UP)) {
+
+                    if (grid[i-1][j].activeDirections.containsKey(Direction.DOWN)) {
+
+                        grid[i][j].isConnected = true;
+                    }
+                }
+            }
+        }
     }
 }
 

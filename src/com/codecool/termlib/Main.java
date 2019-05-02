@@ -26,6 +26,7 @@ public class Main {
             System.out.flush();
             GridElement element = myGridObject.getFieldElement(field, myGrid);
             myGridObject.changeFieldElement(field, element.getNextPermutation(), myGrid);
+            myGridObject.checkConnectionOfGridElement(myGrid);
             myGridObject.printGrid(myGrid);
         }
     }
