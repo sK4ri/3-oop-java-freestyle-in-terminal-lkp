@@ -17,9 +17,9 @@ class Grid {
 
     static Shape[] pipeCharList = {Shape.UPLEFT, Shape.UPRIGHT, Shape.DOWNLEFT, Shape.DOWNRIGHT, Shape.HORIZONTAL, Shape.VERTICAL};
     static HashMap<Integer, Shape> numberShapes = new HashMap<>(){{ put(1, Shape.ONE);
-        put(2, Shape.TWO);
-        put(3, Shape.THREE);
-        put(4, Shape.FOUR);}};
+                                                                    put(2, Shape.TWO);
+                                                                    put(3, Shape.THREE);
+                                                                    put(4, Shape.FOUR);}};
 
     static Shape[] alph = {Shape.A, Shape.B, Shape.C, Shape.D};
 
@@ -54,6 +54,7 @@ class Grid {
                 }
             }
         }
+        printGrid(table);
         return table;
     }
     void printGrid(GridElement[][] grid) {
@@ -63,12 +64,14 @@ class Grid {
             }
             System.out.println();
         }
-        findChar(table);
+        rotateChar(table);
     }
 
-    void findChar(GridElement[][] tableGrid){
+    void rotateChar(GridElement[][] tableGrid){
 
+        System.out.print("Select row: ");
         String rowPick = row.nextLine().toUpperCase();
+        System.out.print("Select column: ");
         String colPick = column.nextLine();
 
         for (int i = 2; i < tableGrid.length-1; i++) {
