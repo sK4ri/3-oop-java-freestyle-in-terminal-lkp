@@ -14,6 +14,7 @@ public class Main {
         GridElement element = myGridObject.getFieldElement(field, myGrid);
         myGridObject.changeFieldElement(field, element.getNextPermutation(), myGrid);
         myGridObject.printGrid(myGrid);
+        myGridObject.checkConnectionOfGridElement(myGrid);
 
     }
 }

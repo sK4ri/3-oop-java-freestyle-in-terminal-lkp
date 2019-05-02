@@ -63,6 +63,14 @@ class Grid {
     void changeFieldElement(int[] field, GridElement newElement, GridElement[][] grid) {
         grid[field[0]][field[1]] = newElement;
     }
+
+    void checkConnectionOfGridElement(GridElement[][] grid) {
+        for (int i=1;i<grid.length-1;i++) {
+            for (int j=1;j<grid[i].length-1;j++) {
+
+            }
+        }
+    }
 }
 
 

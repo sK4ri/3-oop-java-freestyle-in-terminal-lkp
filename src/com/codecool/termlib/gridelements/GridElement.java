@@ -3,6 +3,8 @@ package com.codecool.termlib.gridelements;
 
 import com.codecool.termlib.Direction;
 
+import java.util.HashMap;
+
 import static com.codecool.termlib.Direction.*;
 import static com.codecool.termlib.gridelements.Shape.*;
 import static com.codecool.termlib.gridelements.Shape.HORIZONTAL;
@@ -26,7 +28,7 @@ public class GridElement {
      * The arrays first element are the directions in which the element is connected
      * 0 is LEFT, 1 is UP, 2 is RIGHT, 3 is DOWN
      */
-    Direction[] activeDirections;
+    public HashMap<Direction, Direction> activeDirections;
     /**
      * Shape of element
      */
@@ -48,32 +50,32 @@ public class GridElement {
                 break;
             case UPRIGHT:
                 this.charCode = (char)9491;
-                this.activeDirections = new Direction[]{LEFT,DOWN};
+                this.activeDirections = new HashMap<>(){{put(LEFT, RIGHT);put(DOWN,UP);}};
                 this.nextPermutationOfElement = UPLEFT;
                 break;
             case UPLEFT:
                 this.charCode = (char)9487;
-                this.activeDirections = new Direction[]{RIGHT,DOWN};
+                this.activeDirections = new HashMap<>(){{put(RIGHT, LEFT);put(DOWN,UP);}};
                 this.nextPermutationOfElement = DOWNLEFT;
                 break;
             case DOWNLEFT:
                 this.charCode = (char)9495;
-                this.activeDirections = new Direction[]{RIGHT,UP};
+                this.activeDirections = new HashMap<>(){{put(RIGHT, LEFT);put(UP,DOWN);}};
                 this.nextPermutationOfElement = DOWNRIGHT;
                 break;
             case DOWNRIGHT:
                 this.charCode = (char)9499;
-                this.activeDirections = new Direction[]{LEFT,UP};
+                this.activeDirections = new HashMap<>(){{put(LEFT, RIGHT);put(UP,DOWN);}};
                 this.nextPermutationOfElement = UPRIGHT;
                 break;
             case HORIZONTAL:
                 this.charCode = (char)9473;
-                this.activeDirections = new Direction[]{UP,DOWN};
+                this.activeDirections = new HashMap<>(){{put(RIGHT, LEFT);put(LEFT,RIGHT);}};
                 this.nextPermutationOfElement = VERTICAL;
                 break;
             case VERTICAL:
                 this.charCode = (char)9475;
-                this.activeDirections = new Direction[]{RIGHT,LEFT};
+                this.activeDirections = new HashMap<>(){{put(UP,DOWN);put(DOWN,UP);}};
                 this.nextPermutationOfElement = HORIZONTAL;
                 break;
             case A:
