@@ -51,8 +51,13 @@ class Grid {
     void printGrid(GridElement[][] grid) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++){
-                if (grid[i][j].isConnected) { System.out.print(grid[i][j].charCode + "[34m"); }
-                else {System.out.print(grid[i][j].charCode + "[39m"); }
+                if (grid[i][j].isConnected) {
+                    System.out.print((char)27 + "[34m");
+                }
+                else {
+                    System.out.print((char)27 + "[39m");
+                    }
+                System.out.print(grid[i][j].charCode);
             }
             System.out.println();
         }
