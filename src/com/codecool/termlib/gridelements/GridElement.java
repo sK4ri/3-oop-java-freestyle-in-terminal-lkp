@@ -45,6 +45,7 @@ public class GridElement {
         switch (shape) {
             case SPACE:
                 this.charCode = ' ';
+                break;
             case UPRIGHT:
                 this.charCode = (char)9491;
                 this.activeDirections = new Direction[]{LEFT,DOWN};
