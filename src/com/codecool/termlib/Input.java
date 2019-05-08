@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 
 public class Input {
+
+    /**
+     * User input handling
+     */
     private static final HashSet<Character> validFirstCoordinateInputs = new HashSet<>(){{add('a'); add('b'); add('c'); add('d');}};
     private static final HashSet<Character> validSecondCoordinateInputs = new HashSet<>(){{add('1'); add('2'); add('3'); add('4');}};
     private static final HashMap<Character, Integer> gridCoordinates = new HashMap<>(){{put('a', 1); put('b', 2); put('c', 3); put('d', 4);}};

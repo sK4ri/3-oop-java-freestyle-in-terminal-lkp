@@ -8,6 +8,9 @@ import com.codecool.termlib.gridelements.*;
 
 class Grid {
 
+    /**
+     * Creates the main grid table for the game
+     */
     private static final Shape[] pipeCharList = {Shape.UPLEFT, Shape.UPRIGHT, Shape.DOWNLEFT, Shape.DOWNRIGHT, Shape.HORIZONTAL, Shape.VERTICAL};
     private static final HashMap<Integer, Shape> numberShapes = new HashMap<>() {{
         put(1, Shape.ONE);
@@ -51,6 +54,10 @@ class Grid {
         return table;
     }
 
+    /**
+     * Prints the game table grid
+     * @param grid
+     */
     void printGrid(GridElement[][] grid) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -65,14 +72,30 @@ class Grid {
         }
     }
 
+    /**
+     * Gets the grid elements
+     * @param field
+     * @param grid
+     * @return
+     */
     GridElement getFieldElement(int[] field, GridElement[][] grid) {
         return grid[field[0]][field[1]];
     }
 
+    /**
+     * Rotates the given grid element
+     * @param field
+     * @param newElement
+     * @param grid
+     */
     void changeFieldElement(int[] field, GridElement newElement, GridElement[][] grid) {
         grid[field[0]][field[1]] = newElement;
     }
 
+    /**
+     * Checks if the grid elements have connection to any nearby element
+     * @param grid
+     */
     void checkConnectionOfGridElement(GridElement[][] grid) {
         for (int i = 2; i < grid.length - 2; i++) {
             for (int j = 2; j < grid[i].length - 2; j++) {

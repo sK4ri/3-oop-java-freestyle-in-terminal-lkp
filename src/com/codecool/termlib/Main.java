@@ -3,6 +3,11 @@ package com.codecool.termlib;
 import com.codecool.termlib.gridelements.*;
 
 public class Main {
+
+    /**
+     * Program running starts here
+     * @param args
+     */
     public static void main (String[] args) {
         // Clear screen
         System.out.print("\033[H\033[2J");
